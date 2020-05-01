@@ -1,0 +1,17 @@
+body {
+  @media #{$laptop} {
+    padding-left: 300px;
+  }
+}
+
+.default-layout {
+  display: flex;
+}
+
+.default-layout__content {
+  width: 100%;
+}
+
+.default-layout__page {
+  padding-left: 20px;
+}
