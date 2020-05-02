@@ -2,6 +2,8 @@ import _actions from './actions';
 
 export const state = () => ({
   popupAuthType: 'login',
+  isAuth: null,
+  loginErrorMessage: '',
   inputValues: {
     email: '',
     password: '',
@@ -31,6 +33,12 @@ export const mutations = {
   CLEAR_AUTH_DATA: (state) => {
     state.inputValues.email = '';
     state.inputValues.password = '';
+  },
+  IS_AUTH_ON: (state, payload) => {
+    state.isAuth = payload;
+  },
+  IS_AUTH_ERROR: (state, { message }) => {
+    state.loginErrorMessage = message;
   },
 };
 

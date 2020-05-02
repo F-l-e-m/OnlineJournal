@@ -4,7 +4,7 @@ import { email, required, minLength } from 'vuelidate/lib/validators';
 export default {
   name: 'AuthForm',
   methods: {
-    ...mapActions(['changeAuthPopup', 'setEmailValue', 'setPasswordValue', 'clearAuthData']),
+    ...mapActions(['changeAuthPopup', 'setEmailValue', 'setPasswordValue', 'clearAuthData', 'login']),
     changePopup() {
       this.changeAuthPopup('registration');
     },
@@ -13,7 +13,7 @@ export default {
         this.$v.$touch();
         return;
       }
-      this.$router.push('/home');
+      this.login({ email: this.email, password: this.password });
     },
   },
   validations: {
@@ -28,6 +28,9 @@ export default {
     isValidPassword() {
       return (this.$v.password.$dirty && !this.$v.password.required)
         || (this.$v.password.$dirty && !this.$v.password.minLength);
+    },
+    loginErrorMessage() {
+      return this.$store.state.auth.loginErrorMessage;
     },
     errorMessageEmail() {
       let errorMessage = '';
