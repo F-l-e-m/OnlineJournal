@@ -1,39 +1,49 @@
 <template>
-  <form class="card auth-card">
+  <form class="card auth-card" @submit.prevent="submit">
     <div class="card-content">
       <span class="card-title">Регистрация в онлайн дневнике</span>
       <div class="input-field">
         <input
           id="email"
           type="text"
+          v-model.trim="email"
+          :class="{ invalid: isValidEmail }"
         >
         <label for="email">Email</label>
-        <small class="helper-text invalid">Email</small>
+        <small
+          v-if="isValidEmail"
+          class="helper-text invalid">
+          {{ errorMessageEmail }}
+        </small>
       </div>
       <div class="input-field">
         <input
           id="password"
           type="password"
-          class="validate"
+          v-model.trim="password"
+          :class="{ invalid: isValidPassword }"
         >
         <label for="password">Пароль</label>
-        <small class="helper-text invalid">Password</small>
+        <small
+          v-if="isValidPassword"
+          class="helper-text invalid">
+          {{ errorMessagePassword }}
+        </small>
       </div>
       <div class="input-field">
         <input
           id="name"
           type="text"
-          class="validate"
+          v-model.trim="name"
+          :class="{ invalid: isValidName }"
         >
         <label for="name">Имя</label>
-        <small class="helper-text invalid">Name</small>
+        <small
+          v-if="isValidName"
+          class="helper-text invalid">
+          {{ errorMessageName }}
+        </small>
       </div>
-      <p>
-        <label>
-          <input type="checkbox" />
-          <span>С правилами согласен</span>
-        </label>
-      </p>
     </div>
     <div class="card-action">
       <div>

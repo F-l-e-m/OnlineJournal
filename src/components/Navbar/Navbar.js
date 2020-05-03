@@ -1,3 +1,5 @@
+import { mapActions } from 'vuex';
+
 export default {
   name: 'Navbar',
   mounted() {
@@ -6,8 +8,14 @@ export default {
     });
   },
   methods: {
-    logout() {
-      this.$router.push('/login?message=logout');
+    ...mapActions(['logout']),
+    async logoutHandler() {
+      await this.logout();
+    },
+  },
+  computed: {
+    name() {
+      return this.$store.state.auth.inputValues.name;
     },
   },
 };
