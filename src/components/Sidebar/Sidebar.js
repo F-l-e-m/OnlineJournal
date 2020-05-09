@@ -3,7 +3,7 @@ export default {
   props: ['value'],
   data: () => ({
     links: [
-      { title: 'Главная', url: '/home', exact: true },
+      { title: 'Главная', url: '/', exact: true },
       { title: 'Новая запись', url: '/newnote' },
       { title: 'История записей', url: '/history' },
     ],
