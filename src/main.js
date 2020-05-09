@@ -1,5 +1,6 @@
 import Vue from 'vue';
 import Vuelidate from 'vuelidate';
+import VueMeta from 'vue-meta';
 import firebase from 'firebase/app';
 import App from './App.vue';
 import router from './router';
@@ -11,6 +12,7 @@ import 'firebase/database';
 
 Vue.config.productionTip = false;
 Vue.use(Vuelidate);
+Vue.use(VueMeta);
 
 firebase.initializeApp(firebaseConfig);
 

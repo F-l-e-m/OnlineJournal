@@ -3,6 +3,9 @@ import PopupRegistration from '@/components/PopupRegistration/PopupRegistration.
 
 export default {
   name: 'Auth',
+  metaInfo: {
+    title: 'Auth',
+  },
   components: {
     PopupLogin,
     PopupRegistration,

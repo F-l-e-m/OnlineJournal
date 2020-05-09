@@ -10,4 +10,4 @@
 
 <script src="./DefaultLayout.js"></script>
 
-<style src="./DefaultLayout.scss" lang="scss"></style>
+<style src="./DefaultLayout.scss" scoped lang="scss"></style>
