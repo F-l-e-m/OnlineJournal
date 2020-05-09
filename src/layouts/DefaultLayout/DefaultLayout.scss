@@ -1,11 +1,8 @@
-body {
+.default-layout {
+  display: flex;
   @media #{$laptop} {
     padding-left: 300px;
   }
-}
-
-.default-layout {
-  display: flex;
 }
 
 .default-layout__content {
