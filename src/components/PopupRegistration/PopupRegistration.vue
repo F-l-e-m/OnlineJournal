@@ -5,13 +5,14 @@
       <div class="input-field">
         <input
           id="email"
+          ref="email"
           type="text"
           v-model.trim="email"
-          :class="{ invalid: isValidEmail }"
+          :class="{ invalid: !isValidEmail }"
         >
         <label for="email">Email</label>
         <small
-          v-if="isValidEmail"
+          v-if="!isValidEmail"
           class="helper-text invalid">
           {{ errorMessageEmail }}
         </small>
@@ -19,13 +20,14 @@
       <div class="input-field">
         <input
           id="password"
+          name="password"
           type="password"
           v-model.trim="password"
-          :class="{ invalid: isValidPassword }"
+          :class="{ invalid: !isValidPassword }"
         >
         <label for="password">Пароль</label>
         <small
-          v-if="isValidPassword"
+          v-if="!isValidPassword"
           class="helper-text invalid">
           {{ errorMessagePassword }}
         </small>
@@ -33,13 +35,14 @@
       <div class="input-field">
         <input
           id="name"
+          ref="name"
           type="text"
           v-model.trim="name"
-          :class="{ invalid: isValidName }"
+          :class="{ invalid: !isValidName }"
         >
         <label for="name">Имя</label>
         <small
-          v-if="isValidName"
+          v-if="!isValidName"
           class="helper-text invalid">
           {{ errorMessageName }}
         </small>

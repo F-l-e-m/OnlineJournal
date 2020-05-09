@@ -15,7 +15,7 @@ export default {
   },
   computed: {
     name() {
-      return this.$store.state.auth.inputValues.name;
+      return this.$store.state.auth.name.value;
     },
   },
 };

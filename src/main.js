@@ -1,7 +1,7 @@
 import Vue from 'vue';
-import Vuelidate from 'vuelidate';
 import VueMeta from 'vue-meta';
 import firebase from 'firebase/app';
+import AuthPlugin from './plugins/auth.plugin';
 import App from './App.vue';
 import router from './router';
 import store from './store';
@@ -11,8 +11,8 @@ import 'firebase/auth';
 import 'firebase/database';
 
 Vue.config.productionTip = false;
-Vue.use(Vuelidate);
 Vue.use(VueMeta);
+Vue.use(AuthPlugin);
 
 firebase.initializeApp(firebaseConfig);
 
