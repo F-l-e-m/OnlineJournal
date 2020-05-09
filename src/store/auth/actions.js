@@ -14,9 +14,6 @@ const actions = {
   setNameValue({ commit }, payload) {
     commit('CHANGE_NAME_VALUE', payload);
   },
-  changeValid({ commit }, payload) {
-    commit('INPUT_IS_VALID', payload);
-  },
   clearAuthData({ commit }) {
     commit('CLEAR_AUTH_DATA');
   },

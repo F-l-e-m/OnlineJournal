@@ -20,14 +20,16 @@ export default {
       passwordErrorMessage: (pass) => {
         let errorMessage = '';
         if (!pass) errorMessage = 'empty';
-        if (pass.length <= 6) errorMessage = 'minError';
-        if (!patterns.password.test(pass)) errorMessage = 'incorrect';
+        else if (pass && pass.length <= 6) errorMessage = 'minLength';
+        else if (!patterns.password.test(pass)) errorMessage = 'incorrect';
         return errorMessage;
       },
       nameIsValid: (name) => patterns.name.test(name),
       nameErrorMessage: (name) => {
-        if (!name) return 'empty';
-        return patterns.email.test(name) ? '' : 'incorrect';
+        let errorMessage = '';
+        if (!name) errorMessage = 'empty';
+        else if (!patterns.password.test(name)) errorMessage = 'incorrect';
+        return errorMessage;
       },
     };
   },

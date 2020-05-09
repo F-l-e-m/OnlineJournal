@@ -1,8 +1,9 @@
-import { mapActions } from 'vuex';
+import { mapActions, mapState } from 'vuex';
 
 export default {
   name: 'AuthForm',
   computed: {
+    ...mapState(['auth']),
     isValidEmail() {
       return this.$validate.emailIsValid(this.email);
     },
@@ -10,14 +11,16 @@ export default {
       return this.$validate.passwordIsValid(this.password);
     },
     errorMessageEmail() {
-      return this.$validate.emailErrorMessage(this.email);
+      const typeErrorMessage = this.$validate.emailErrorMessage(this.email);
+      return this.auth.email.errorMessages[typeErrorMessage];
     },
     errorMessagePassword() {
-      return this.$validate.passwordErrorMessage(this.password);
+      const typeErrorMessage = this.$validate.passwordErrorMessage(this.password);
+      return this.auth.password.errorMessages[typeErrorMessage];
     },
     email: {
       get() {
-        return this.$store.state.auth.email.value;
+        return this.auth.email.value;
       },
       set(value) {
         this.setEmailValue(value);
@@ -25,7 +28,7 @@ export default {
     },
     password: {
       get() {
-        return this.$store.state.auth.password.value;
+        return this.auth.password.value;
       },
       set(value) {
         this.setPasswordValue(value);
@@ -33,7 +36,7 @@ export default {
     },
   },
   methods: {
-    ...mapActions(['changeAuthPopup', 'setEmailValue', 'setPasswordValue', 'clearAuthData', 'login', 'changeValid']),
+    ...mapActions(['changeAuthPopup', 'setEmailValue', 'setPasswordValue', 'clearAuthData', 'login']),
     changePopup() {
       this.changeAuthPopup('registration');
     },

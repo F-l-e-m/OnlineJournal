@@ -1,9 +1,9 @@
-import { mapActions } from 'vuex';
+import { mapActions, mapState } from 'vuex';
 
 export default {
   name: 'PopupRegistration',
   methods: {
-    ...mapActions(['changeAuthPopup', 'setEmailValue', 'setPasswordValue', 'setNameValue', 'clearAuthData', 'login', 'registration', 'changeValid']),
+    ...mapActions(['changeAuthPopup', 'setEmailValue', 'setPasswordValue', 'setNameValue', 'clearAuthData', 'registration']),
     changePopup() {
       this.changeAuthPopup('login');
     },
@@ -24,27 +24,31 @@ export default {
     },
   },
   computed: {
+    ...mapState(['auth']),
     isValidEmail() {
       return this.$validate.emailIsValid(this.email);
     },
     isValidPassword() {
       return this.$validate.passwordIsValid(this.password);
     },
-    errorMessageEmail() {
-      return this.$validate.emailErrorMessage(this.email);
-    },
-    errorMessagePassword() {
-      return this.$validate.passwordErrorMessage(this.password);
-    },
     isValidName() {
       return this.$validate.nameIsValid(this.name);
     },
+    errorMessageEmail() {
+      const typeErrorMessage = this.$validate.emailErrorMessage(this.email);
+      return this.auth.email.errorMessages[typeErrorMessage];
+    },
+    errorMessagePassword() {
+      const typeErrorMessage = this.$validate.passwordErrorMessage(this.password);
+      return this.auth.password.errorMessages[typeErrorMessage];
+    },
     errorMessageName() {
-      return this.$validate.nameErrorMessage(this.name);
+      const typeErrorMessage = this.$validate.nameErrorMessage(this.name);
+      return this.auth.name.errorMessages[typeErrorMessage];
     },
     name: {
       get() {
-        return this.$store.state.auth.name.value;
+        return this.auth.name.value;
       },
       set(value) {
         this.setNameValue(value);
@@ -52,7 +56,7 @@ export default {
     },
     email: {
       get() {
-        return this.$store.state.auth.email.value;
+        return this.auth.email.value;
       },
       set(value) {
         this.setEmailValue(value);
@@ -60,7 +64,7 @@ export default {
     },
     password: {
       get() {
-        return this.$store.state.auth.password.value;
+        return this.auth.password.value;
       },
       set(value) {
         this.setPasswordValue(value);

@@ -17,22 +17,20 @@ export const state = () => ({
     isValid: true,
     errorMessages: {
       empty: 'Поле не должно быть пустым',
-      minLength: 'Пароль должен содержать более: ',
+      minLength: 'Пароль должен содержать более 6 символов',
     },
   },
   name: {
     value: '',
     isValid: true,
     errorMessages: {
-      empty: 'Это обязательное поле',
+      empty: 'Поле не должно быть пустым',
+      incorrect: 'Введите корректное имя',
     },
   },
 });
 
 export const mutations = {
-  INPUT_IS_VALID: (state, { value, type }) => {
-    state[type].isValid = value;
-  },
   CHANGE_AUTH_POPUP: (state, payload) => {
     state.popupAuthType = payload;
   },
