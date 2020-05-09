@@ -30,51 +30,5 @@ export default {
         return patterns.email.test(name) ? '' : 'incorrect';
       },
     };
-    // vue.prototype.$isValid = (type) => {
-    //   let isValid = null;
-    //   switch (type) {
-    //     case 'email':
-    //       isValid = (this.$v.email.$dirty && !this.$v.email.required)
-    //         || (this.$v.email.$dirty && !this.$v.email.email);
-    //       break;
-    //     case 'password':
-    //       isValid = (this.$v.password.$dirty && !this.$v.password.required)
-    //         || (this.$v.password.$dirty && !this.$v.password.minLength);
-    //       break;
-    //     case 'name':
-    //       isValid = (this.$v.name.$dirty && !this.$v.name.required);
-    //       break;
-    //     default:
-    //       break;
-    //   }
-    //   return isValid;
-    // };
-    // vue.prototype.$errorMessage = (type) => {
-    //   let errorMessage = '';
-    //   switch (type) {
-    //     case 'email':
-    //       if (this.$v.email.$dirty && !this.$v.email.required) {
-    //         errorMessage = 'empty';
-    //       } else if (this.$v.email.$dirty && !this.$v.email.email) {
-    //         errorMessage = 'incorrect';
-    //       }
-    //       break;
-    //     case 'password':
-    //       if (this.$v.password.$dirty && !this.$v.password.required) {
-    //         errorMessage = 'empty';
-    //       } else if (this.$v.password.$dirty && !this.$v.password.minLength) {
-    //         errorMessage = 'minLength';
-    //       }
-    //       break;
-    //     case 'name':
-    //       if (this.$v.name.$dirty && !this.$v.name.required) {
-    //         errorMessage = 'empty';
-    //       }
-    //       break;
-    //     default:
-    //       break;
-    //   }
-    //   return errorMessage;
-    // };
   },
 };
